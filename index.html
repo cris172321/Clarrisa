@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Clarrisa</title>
+  
+  <!-- Romantic Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Fredoka:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Floating Hearts & Sparkles Canvas -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Top Floating Controls -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="brand-badge">
+        <span class="heart-pulse">💖</span>
+        <span class="brand-text">For Clarrisa</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <!-- Admin / View Answers button -->
+      <button id="viewAnswersBtn" class="control-pill answers-pill" title="View Recorded Answers">
+        <span class="ctrl-icon">📋</span>
+        <span class="ctrl-label">View Answers</span>
+        <span id="responseCountBadge" class="badge-count">0</span>
+      </button>
+
+      <!-- Fullscreen Toggle -->
+      <button id="fullscreenToggle" class="control-pill" title="Toggle Fullscreen">
+        <span class="ctrl-icon">⛶</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Multi-page App Container -->
+  <main class="app-container">
+
+    <!-- ==========================================
+         PAGE 1: GREETING ("hii, pretty!...")
+         ========================================== -->
+    <section id="page1" class="page-card active">
+      <div class="card-inner">
+        
+        <!-- Cute Animated Mascot / Illustration -->
+        <div class="mascot-wrapper">
+          <div class="mascot-bounce">
+            <svg class="cute-cat-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Ears -->
+              <polygon points="40,55 25,18 62,35" fill="#FFAAA6" />
+              <polygon points="40,50 32,26 55,38" fill="#FF8FAB" />
+              <polygon points="120,55 135,18 98,35" fill="#FFAAA6" />
+              <polygon points="120,50 128,26 105,38" fill="#FF8FAB" />
+              <!-- Face Head -->
+              <ellipse cx="80" cy="85" rx="55" ry="46" fill="#FFF2F2" stroke="#FFAAA6" stroke-width="4"/>
+              <!-- Cheeks -->
+              <ellipse cx="48" cy="98" rx="10" ry="6" fill="#FFB7B2" opacity="0.8"/>
+              <ellipse cx="112" cy="98" rx="10" ry="6" fill="#FFB7B2" opacity="0.8"/>
+              <!-- Eyes (Sparkly Happy) -->
+              <path d="M50 78 Q58 68 66 78" stroke="#4A3E3D" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+              <path d="M94 78 Q102 68 110 78" stroke="#4A3E3D" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+              <!-- Nose & Mouth -->
+              <polygon points="76,88 84,88 80,93" fill="#FF8FAB" />
+              <path d="M74 94 Q80 100 80 94 Q80 100 86 94" stroke="#4A3E3D" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <!-- Holding a Flower -->
+              <g class="flower-held">
+                <path d="M80 115 Q82 135 90 148" stroke="#77DD77" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="95" cy="120" r="8" fill="#FF6584"/>
+                <circle cx="85" cy="115" r="8" fill="#FF8FAB"/>
+                <circle cx="90" cy="110" r="8" fill="#FFAAA6"/>
+                <circle cx="100" cy="114" r="8" fill="#FF8FAB"/>
+                <circle cx="93" cy="117" r="5" fill="#FFD166"/>
+              </g>
+              <!-- Sparkles -->
+              <text x="18" y="42" font-size="20">✨</text>
+              <text x="126" y="46" font-size="22">🌸</text>
+            </svg>
+          </div>
+          <div class="heart-float heart-1">💖</div>
+          <div class="heart-float heart-2">✨</div>
+        </div>
+
+        <div class="text-content">
+          <span class="sub-greeting">tap to start something sweet 💕</span>
+          <h1 class="main-title">hii, pretty! ✨</h1>
+          <p class="question-text">can i bother you for a second? 🥺👉👈</p>
+        </div>
+
+        <!-- Buttons Container -->
+        <div class="action-buttons-wrap" id="p1ButtonZone">
+          <button id="p1YesBtn" class="primary-btn yes-btn">
+            <span class="btn-sparkle">✨</span>
+            <span class="btn-text">Yes, of course! 💕</span>
+          </button>
+          <button id="p1NoBtn" class="secondary-btn no-btn" type="button">
+            <span class="btn-text">No 🙈</span>
+          </button>
+        </div>
+
+        <p id="p1SweetHint" class="sweet-hint"></p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 2: THE DATE QUESTION (Cubao Expo)
+         ========================================== -->
+    <section id="page2" class="page-card">
+      <div class="card-inner">
+
+        <div class="text-content" style="margin-top: 15px;">
+          <h2 class="main-title serif-title">will you go out with me<br><span class="highlight-text">and go to cubao expo?</span> 🌸</h2>
+        </div>
+
+        <!-- Yes / Playful No Buttons -->
+        <div class="action-buttons-wrap" id="p2ButtonZone" style="margin-top: 25px;">
+          <button id="p2YesBtn" class="primary-btn yes-btn pulse-glow">
+            <span class="btn-sparkle">💖</span>
+            <span class="btn-text">Yes, I'd love to! 🥰</span>
+          </button>
+          <button id="p2NoBtn" class="secondary-btn no-btn" type="button">
+            <span class="btn-text">No 🥺</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 3: THE PLAN ("Here's the plan:" + Picture)
+         ========================================== -->
+    <section id="pagePlan" class="page-card">
+      <div class="card-inner">
+
+        <div class="text-content text-center">
+          <h2 class="main-title serif-title">Here's the plan:</h2>
+        </div>
+
+        <!-- Polaroid Photo Frame with Picture Switcher -->
+        <div class="plan-photo-wrap">
+          <div class="plan-photo-card">
+            <img id="mainPlanPhoto" src="date_photo.jpg" alt="Us" class="plan-photo-img">
+            <div class="plan-photo-caption">you and me</div>
+          </div>
+          <!-- Optional photo thumbnail switcher -->
+          <div class="photo-dots">
+            <button type="button" class="photo-dot active" data-src="date_photo.jpg" aria-label="Photo 1"></button>
+            <button type="button" class="photo-dot" data-src="photo_church.jpg" aria-label="Photo 2"></button>
+            <button type="button" class="photo-dot" data-src="photo_mirror.jpg" aria-label="Photo 3"></button>
+            <button type="button" class="photo-dot" data-src="photo_night.jpg" aria-label="Photo 4"></button>
+          </div>
+        </div>
+
+        <!-- Itinerary Steps in Clean English (No Emojis) -->
+        <div class="plan-list">
+          <div class="plan-item">
+            <span class="plan-num">1</span>
+            <span class="plan-text">Go to church first</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-num">2</span>
+            <span class="plan-text">Head over to Cubao Expo</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-num">3</span>
+            <span class="plan-text">Take a lot of pictures of you</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-num">4</span>
+            <span class="plan-text">Eat dinner together</span>
+          </div>
+          <div class="plan-item">
+            <span class="plan-num">5</span>
+            <span class="plan-text">Walk you safely to your ride home</span>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flow-nav-buttons">
+          <button id="planBackBtn" class="pill-btn back-btn" type="button">
+            <span>Back</span>
+          </button>
+          <button id="planNextBtn" class="primary-btn next-step-btn" type="button">
+            <span class="btn-text">Next: Pick Date and Time</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 4: CALENDAR & TIME (No Emojis)
+         ========================================== -->
+    <section id="pageDateTime" class="page-card">
+      <div class="card-inner wide-card">
+
+        <div class="text-content text-center">
+          <h2 class="main-title">Pick a date and time</h2>
+          <p class="question-text">Choose the date and time that fits you best:</p>
+        </div>
+
+        <!-- Quick Date Preset Chips -->
+        <div class="quick-preset-chips">
+          <button type="button" class="preset-chip" id="chipThisSat">This Saturday</button>
+          <button type="button" class="preset-chip" id="chipThisSun">This Sunday</button>
+          <button type="button" class="preset-chip" id="chipNextSat">Next Saturday</button>
+          <button type="button" class="preset-chip" id="chipSurprise">You Pick For Me</button>
+        </div>
+
+        <div class="datetime-grid">
+          <!-- Calendar Section -->
+          <div class="calendar-panel">
+            <div class="calendar-header">
+              <button id="calPrevMonth" class="cal-nav-btn" aria-label="Previous Month">‹</button>
+              <h3 id="calMonthYearTitle" class="cal-month-title">November 2026</h3>
+              <button id="calNextMonth" class="cal-nav-btn" aria-label="Next Month">›</button>
+            </div>
+            
+            <div class="calendar-weekdays">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+
+            <div id="calendarDaysGrid" class="calendar-days-grid">
+              <!-- Dynamically populated days -->
+            </div>
+          </div>
+
+          <!-- Time Slot Selection Section (Clean, without emojis or subtext) -->
+          <div class="time-panel">
+            <h3 class="panel-section-title">Preferred Time</h3>
+            <div class="time-slots-list">
+              
+              <label class="time-slot-card">
+                <input type="radio" name="timeSlot" value="2:00 PM">
+                <div class="slot-content">
+                  <span class="slot-time">2:00 PM</span>
+                </div>
+              </label>
+
+              <label class="time-slot-card">
+                <input type="radio" name="timeSlot" value="4:30 PM" checked>
+                <div class="slot-content">
+                  <span class="slot-time">4:30 PM</span>
+                </div>
+              </label>
+
+              <label class="time-slot-card">
+                <input type="radio" name="timeSlot" value="6:30 PM">
+                <div class="slot-content">
+                  <span class="slot-time">6:30 PM</span>
+                </div>
+              </label>
+
+              <label class="time-slot-card custom-time-card">
+                <input type="radio" name="timeSlot" value="custom" id="customTimeRadio">
+                <div class="slot-content">
+                  <span class="slot-time">Custom Time</span>
+                  <div class="custom-time-input-wrap">
+                    <input type="time" id="customTimePicker" value="16:00">
+                  </div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Selected Summary Bar (No Emoji) -->
+        <div class="selection-summary-bar" id="selectionSummaryBar">
+          <div class="summary-details">
+            <span class="summary-label">Selected Date &amp; Time:</span>
+            <strong id="summaryDateTimeDisplay">Please choose a date &amp; time above</strong>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons: Back to Plan and Confirm Date (No Emoji) -->
+        <div class="flow-nav-buttons">
+          <button id="dateTimeBackBtn" class="pill-btn back-btn" type="button">
+            <span>Back</span>
+          </button>
+          <button id="sealDateBtn" class="primary-btn seal-btn pulse-glow" type="button">
+            <span class="btn-text">Confirm Date</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 5: CONFIRMATION / TICKET SCREEN (No Emojis)
+         ========================================== -->
+    <section id="pageConfirmation" class="page-card">
+      <div class="card-inner">
+
+        <div class="celebration-badge">
+          <span>IT'S A DATE</span>
+        </div>
+
+        <h2 class="main-title confirmation-title">Yay! You just made my day!</h2>
+        <p class="question-text">Here is your official Cubao Expo Date Ticket:</p>
+
+        <!-- Aesthetic Boarding Pass / Date Ticket (No Emojis) -->
+        <div class="date-ticket" id="dateTicketElement">
+          <div class="ticket-header">
+            <div class="ticket-brand">
+              <div>
+                <h4>CUBAO EXPO DATE PASS</h4>
+                <small>Special Invitation • Admits Two</small>
+              </div>
+            </div>
+            <div class="ticket-stamp">CONFIRMED</div>
+          </div>
+
+          <div class="ticket-body">
+            <div class="ticket-info-row">
+              <div class="info-block">
+                <span class="info-label">FOR</span>
+                <span class="info-val">Clarrisa</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">DESTINATION</span>
+                <span class="info-val">Cubao Expo, Quezon City</span>
+              </div>
+            </div>
+
+            <div class="ticket-info-row highlight-row">
+              <div class="info-block">
+                <span class="info-label">DATE</span>
+                <span class="info-val highlight-val" id="ticketDateDisplay">Saturday, Nov 28, 2026</span>
+              </div>
+              <div class="info-block">
+                <span class="info-label">TIME</span>
+                <span class="info-val highlight-val" id="ticketTimeDisplay">4:30 PM</span>
+              </div>
+            </div>
+
+            <div class="ticket-plan-summary">
+              <span class="plan-summary-label">The Plan:</span>
+              <p>Church &bull; Cubao Expo &bull; Photos &bull; Dinner &bull; Walk you home</p>
+            </div>
+
+            <div class="ticket-footer">
+              <div class="barcode-area">
+                <span class="barcode-lines">||| | || |||| | ||| |||| | | |||| ||</span>
+                <span class="barcode-sub">PASS #EXP0-2026-DATE</span>
+              </div>
+              <div class="ticket-promise">
+                <span>See you soon, pretty!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ticket Actions (No Emojis) -->
+        <div class="ticket-actions">
+          <button id="sendToHimBtn" class="primary-btn share-btn">
+            <span>Send to Him / Copy Summary</span>
+          </button>
+          <button id="printTicketBtn" class="pill-btn secondary-action-btn">
+            <span>Save / Print Ticket</span>
+          </button>
+          <button id="restartBtn" class="pill-btn text-action-btn">
+            <span>Change Date or Time</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       ADMIN / RECORDED ANSWERS MODAL
+       ========================================== -->
+  <div id="answersModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-container admin-modal">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Recorded Answers &amp; Date Submissions</h3>
+          <p class="modal-sub">Here are the answers she submitted:</p>
+        </div>
+        <button id="closeAnswersModal" class="close-modal-btn" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        
+        <div class="storage-notice">
+          <div class="notice-text">
+            <strong>Answers are automatically recorded!</strong>
+            <p>Saved in your browser and in <code>answers_log.txt</code> and <code>responses.json</code> on your computer.</p>
+          </div>
+        </div>
+
+        <div id="responsesListContainer" class="responses-list">
+          <!-- Populated by JavaScript -->
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button id="copyAllSummaryBtn" class="pill-btn">
+          <span>Copy Latest Summary</span>
+        </button>
+        <button id="downloadAnswersTxtBtn" class="pill-btn">
+          <span>Download .TXT Log</span>
+        </button>
+        <button id="clearResponsesBtn" class="pill-btn danger-btn">
+          <span>Clear Test Entries</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotification" class="toast-popup" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
